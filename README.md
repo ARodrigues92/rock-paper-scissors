@@ -1,2 +1,2 @@
-This is Javascript Rock Paper Scissors game for the Odin Project.
+This is a Javascript Rock Paper Scissors game for the Odin Project.
 
