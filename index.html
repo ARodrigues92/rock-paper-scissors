@@ -1,10 +1,29 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
     <head>
-        <script src="main.js"></script></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rock-Paper-Scissors</title>
+        <meta name="description" content="This is a Rock-Paper-Scissors game project for the Odin Project">
+        <link rel="stylesheet" type="text/css" href="main.css">
     </head>
     <body>
+        <div id="container">
 
+            <p>Make your selection</p>
+
+            <div id="buttons-container">
+                <button type="button">Rock</button>
+                <button type="button">Paper</button>
+                <button type="button">Scissors</button>
+            </div>
+            
+            <div id="result-container">
+                <p id="result-message">First to 5 wins, lets play!</p>
+                <p id="scores">Player 0 - 0 Computer</p>
+            </div>
+        </div>
+
+        <script src="main.js"></script>
     </body>
 </html>

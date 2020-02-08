@@ -12,42 +12,45 @@ function play (playerSelection, computerSelection){
 
     playerSelection = playerSelection.toLowerCase();
 
-    if(playerSelection === "rock" || playerSelection === "paper" || playerSelection === "scissors"){
-        if(playerSelection !== computerSelection){
-            if(
-                playerSelection === "rock" && computerSelection === "scissors" ||
-                playerSelection === "paper" && computerSelection === "rock" ||
-                playerSelection === "scissors" && computerSelection === "paper"
-            ){
-                playerScore ++;
-                if(playerScore<3){
-                    return "You win!\n"+playerSelection+" beats "+computerSelection+"\nPlayer-"+playerScore+" Computer-"+computerScore;
-                }else{
-                    return "Player wins "+playerScore+"-"+computerScore;
-                }
+    if(playerSelection !== computerSelection){
+        if(
+            playerSelection === "rock" && computerSelection === "scissors" ||
+            playerSelection === "paper" && computerSelection === "rock" ||
+            playerSelection === "scissors" && computerSelection === "paper"
+        ){
+            playerScore ++;
+            if(playerScore<5){
+                document.getElementById("result-message").innerHTML=`You win! ${playerSelection} beats ${computerSelection}.`;
+                document.getElementById("scores").innerHTML=`Player ${playerScore} - ${computerScore} Computer`;
+            }else{
+                document.getElementById("result-message").innerHTML=`You win! ${playerSelection} beats ${computerSelection}.`;
+                document.getElementById("scores").innerHTML=`Player wins ${playerScore} - ${computerScore}`;
+                playerScore = 0;
+                computerScore = 0;
             }
-            else{
-                computerScore ++;
-                if(computerScore<3){
-                    return "You lose!\n"+computerSelection+" beats "+playerSelection+"\nPlayer-"+playerScore+" Computer-"+computerScore;
-                }else{
-                    return "Computer wins "+computerScore+"-"+playerScore;
-                }
+        }
+        else{
+            computerScore ++;
+            if(computerScore<5){
+                document.getElementById("result-message").innerHTML=`You lose! ${computerSelection} beats ${playerSelection}.`;
+                document.getElementById("scores").innerHTML=`Player ${playerScore} - ${computerScore} Computer`;
+            }else{
+                document.getElementById("result-message").innerHTML=`You lose! ${computerSelection} beats ${playerSelection}.`;
+                document.getElementById("scores").innerHTML=`Computer wins ${computerScore} - ${playerScore}`;
+                playerScore = 0;
+                computerScore = 0;
             }
-        }else{
-            return "It's a tie!\nPlayer-"+playerScore+" Computer-"+computerScore;
         }
     }else{
-        return "Your selection is not valid"
+        document.getElementById("result-message").innerHTML="Its a tie";
     }
 
 }
 
-function game (){
-    while(playerScore<3 && computerScore<3){
-            alert(play(prompt("Please make your choice (Rock, Paper or Scissors)"), computerPlay()));
-    }
-}
+const buttons = document.querySelectorAll("button");
 
-
-game();
+buttons.forEach (function (button){
+    button.addEventListener("click", function(){
+        play(button.innerHTML, computerPlay());
+    });
+});
