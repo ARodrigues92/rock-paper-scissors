@@ -1,9 +1,9 @@
-playerScore = 0;
-computerScore = 0;
+let playerScore = 0;
+let computerScore = 0;
 
 
 function computerPlay () {
-    choices = ["rock", "paper", "scissors"];
+    const choices = ["rock", "paper", "scissors"];
     return choices[Math.floor(Math.random() * choices.length)];
 }
 
